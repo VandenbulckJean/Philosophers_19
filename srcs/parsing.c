@@ -6,7 +6,7 @@
 /*   By: jvanden- <jvanden-@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 16:01:16 by jvanden-          #+#    #+#             */
-/*   Updated: 2021/08/25 16:13:47 by jvanden-         ###   ########.fr       */
+/*   Updated: 2021/09/14 14:19:50 by jvanden-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,17 +65,17 @@ int	get_number_of_times_each_philosophers_must_eat(t_data *data, char *str)
 int	parsing(int argc, char **argv, t_data *data)
 {
 	if (argc < 5 || argc > 6)
-		free_n_exit(1, NULL, 0);
+		return(1);
 	if (!get_number_of_philosophers(data, argv[1]))
-		free_n_exit(2, NULL, 0);
+		return(2);
 	if (!get_time_to_die(data, argv[2]))
-		free_n_exit(3, NULL, 0);
+		return(3);
 	if (!get_time_to_eat(data, argv[3]))
-		free_n_exit(4, NULL, 0);
-	if (!get_time_to_die(data, argv[4]))
-		free_n_exit(5, NULL, 0);
+		return(4);
+	if (!get_time_to_sleep(data, argv[4]))
+		return(5);
 	if (argc == 6)
-		if (!get_time_to_die(data, argv[5]))
-			free_n_exit(6, NULL, 0);
-	return(1);
+		if (!get_number_of_times_each_philosophers_must_eat(data, argv[5]))
+			return(6);
+	return(0);
 }

@@ -6,22 +6,22 @@
 /*   By: jvanden- <jvanden-@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 14:57:29 by jvanden-          #+#    #+#             */
-/*   Updated: 2021/08/25 16:08:16 by jvanden-         ###   ########.fr       */
+/*   Updated: 2021/09/14 15:33:22 by jvanden-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philosophers.h"
 
-void	free_n_exit(char error, t_data *data, char lvl)
+int	free_n_exit(char error, t_data *data, char lvl)
 {
 	(void)data;
 
 	if (error)
 		error_manager(error);
 	if (lvl <= 0)
-		exit(EXIT_FAILURE);
+		return(0);
 	else
-		exit(EXIT_SUCCESS);
+		return(1);
 }
 
 void	error_manager(char error)
@@ -38,6 +38,8 @@ void	error_manager(char error)
 		printf("Error: Time to sleep must be a number between 0 and 2147483647.\n");
 	else if (error == 6)
 		printf("Error: Number of time each one must eat must be a number between 0 and 2147483647.\n");
+	else if (error == 7)
+		printf("Error: Couldn't allocate memory for philosophers.\n");
 	else
 		printf("Error: undefined.\n");
 }
