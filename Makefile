@@ -6,7 +6,7 @@
 #    By: jvanden- <jvanden-@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/25 11:52:43 by jvanden-          #+#    #+#              #
-#    Updated: 2021/08/25 16:02:23 by jvanden-         ###   ########.fr        #
+#    Updated: 2021/09/27 13:21:17 by jvanden-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,14 +23,20 @@ NAME		=	philosophers
 SRCS_PATH			=	srcs/
 
 SRCS_PHILOSOPHERS	=	philosophers.c \
-						parsing.c
+						parsing.c \
+						get_arguments.c \
+						initialisation.c \
+						activities.c
 				
 SRCS_UTILS			=	ft_atoi.c \
 						exit.c \
 						ft_strlen.c \
 						ft_strcmp.c \
 						check_int.c \
-						ft_isdigit.c
+						ft_isdigit.c \
+						get_time.c \
+						ft_usleep.c \
+						log_writer.c
 
 SRCS_PHILOSOPHERS2	=	$(addprefix $(SRCS_PATH), $(SRCS_PHILOSOPHERS)) \
 						$(addprefix $(SRCS_PATH)utils/, $(SRCS_UTILS))

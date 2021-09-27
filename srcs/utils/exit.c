@@ -6,7 +6,7 @@
 /*   By: jvanden- <jvanden-@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 14:57:29 by jvanden-          #+#    #+#             */
-/*   Updated: 2021/09/14 15:33:22 by jvanden-         ###   ########.fr       */
+/*   Updated: 2021/09/27 12:08:42 by jvanden-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,17 @@ int	free_n_exit(char error, t_data *data, char lvl)
 		error_manager(error);
 	if (lvl <= 0)
 		return(0);
+	else if (lvl <= 1)
+	{
+		free(data->assembly.philosophers);
+		return(0);
+	}
 	else
+	{
+		free(data->assembly.philosophers);
+		printf("Exited without error\n");
 		return(1);
+	}
 }
 
 void	error_manager(char error)
@@ -39,7 +48,7 @@ void	error_manager(char error)
 	else if (error == 6)
 		printf("Error: Number of time each one must eat must be a number between 0 and 2147483647.\n");
 	else if (error == 7)
-		printf("Error: Couldn't allocate memory for philosophers.\n");
+		printf("Error: Couldn't allocate memory for assembly.\n");
 	else
 		printf("Error: undefined.\n");
 }
