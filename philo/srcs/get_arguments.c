@@ -6,7 +6,7 @@
 /*   By: jvanden- <jvanden-@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:08:23 by jvanden-          #+#    #+#             */
-/*   Updated: 2021/09/15 11:08:32 by jvanden-         ###   ########.fr       */
+/*   Updated: 2021/09/28 10:47:26 by jvanden-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ int	get_number_of_times_each_philosophers_must_eat(t_data *data, char *str)
 	if (!check_int(str))
 		return (0);
 	data->number_of_times_each_philosopher_must_eat = ft_atoi(str);
-	if (!is_inside_limits(INT_MAX, 0, data->number_of_times_each_philosopher_must_eat))
+	if (!is_inside_limits(INT_MAX, 0,
+			data->number_of_times_each_philosopher_must_eat))
 		return (0);
 	return (1);
 }

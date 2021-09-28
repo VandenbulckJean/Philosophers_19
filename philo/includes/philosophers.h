@@ -6,7 +6,7 @@
 /*   By: jvanden- <jvanden-@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 10:15:44 by jvanden-          #+#    #+#             */
-/*   Updated: 2021/09/28 08:46:00 by jvanden-         ###   ########.fr       */
+/*   Updated: 2021/09/28 10:57:57 by jvanden-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,8 @@
 # include <pthread.h>
 # include <sys/time.h>
 
-# ifndef INT_MAX 
-#  define INT_MAX 2147483647
-# endif
-# ifndef INT_MIN
-#  define INT_MIN -2147483648
-# endif
+# define INT_MAX 2147483647
+# define INT_MIN -2147483648
 
 typedef struct s_philosopher
 {
@@ -40,7 +36,7 @@ typedef struct s_philosopher
 	struct s_data					*data;
 }	t_philosopher;
 
-typedef struct	s_philosopher_assembly
+typedef struct s_philosopher_assembly
 {
 	t_philosopher					*philosophers;
 	long long						starting_time;
@@ -82,7 +78,8 @@ int			get_number_of_philosophers(t_data *data, char *str);
 int			get_time_to_die(t_data *data, char *str);
 int			get_time_to_eat(t_data *data, char *str);
 int			get_time_to_sleep(t_data *data, char *str);
-int			get_number_of_times_each_philosophers_must_eat(t_data *data, char *str);
+int			get_number_of_times_each_philosophers_must_eat(t_data *data,
+				char *str);
 
 //INIT
 int			initialise(t_data *data);
@@ -91,4 +88,5 @@ int			initialise(t_data *data);
 int			death_checker(t_philosopher *philosopher, int end_of_experiment);
 void		live(t_philosopher *philosopher);
 void		terminate(t_data *data);
+int			is_well_fed(t_philosopher *philosopher);
 #endif
