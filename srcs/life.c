@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   activities.c                                       :+:      :+:    :+:   */
+/*   life.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvanden- <jvanden-@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 13:14:19 by jvanden-          #+#    #+#             */
-/*   Updated: 2021/09/27 14:01:19 by jvanden-         ###   ########.fr       */
+/*   Updated: 2021/09/28 09:27:40 by jvanden-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
 
-static void	take_fork(t_philosopher *philosopher, int left)
+static void	take_fork(t_philosopher *philosopher)
 {
-	if (left)
-		pthread_mutex_lock(&philosopher->left_fork);
-	else
-		pthread_mutex_lock(philosopher->right_fork);
+	pthread_mutex_lock(&philosopher->left_fork);
+	pthread_mutex_lock(&philosopher->data->assembly.write);
+	log_writer(philosopher, "has taken a fork\n");
+	pthread_mutex_unlock(&philosopher->data->assembly.write);
+	if (!philosopher->right_fork)
+	{
+		ft_usleep(philosopher->data->time_to_die * 2);
+		return ;
+	}
+	pthread_mutex_lock(philosopher->right_fork);
 	pthread_mutex_lock(&philosopher->data->assembly.write);
 	log_writer(philosopher, "has taken a fork\n");
 	pthread_mutex_unlock(&philosopher->data->assembly.write);
@@ -53,13 +59,7 @@ static void	think(t_philosopher *philosopher)
 
 void	live(t_philosopher *philosopher)
 {
-	take_fork(philosopher, 1);
-	if (!philosopher->right_fork)
-	{
-		ft_usleep(philosopher->data->time_to_die * 2);
-		return NULL;
-	}
-	take_fork(philosopher, 0);
+	take_fork(philosopher);
 	eat(philosopher);
 	philosopher_sleep(philosopher);
 	think(philosopher);

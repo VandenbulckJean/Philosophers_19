@@ -6,7 +6,7 @@
 /*   By: jvanden- <jvanden-@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 14:57:29 by jvanden-          #+#    #+#             */
-/*   Updated: 2021/09/27 12:08:42 by jvanden-         ###   ########.fr       */
+/*   Updated: 2021/09/28 08:33:14 by jvanden-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void	error_manager(char error)
 		printf("Error: Number of time each one must eat must be a number between 0 and 2147483647.\n");
 	else if (error == 7)
 		printf("Error: Couldn't allocate memory for assembly.\n");
+	else if (error == 8)
+		printf("Error: Philosopher thread creation failed.\n");
 	else
 		printf("Error: undefined.\n");
 }

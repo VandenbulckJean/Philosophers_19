@@ -6,7 +6,7 @@
 /*   By: jvanden- <jvanden-@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 10:15:44 by jvanden-          #+#    #+#             */
-/*   Updated: 2021/09/27 14:46:34 by jvanden-         ###   ########.fr       */
+/*   Updated: 2021/09/28 08:46:00 by jvanden-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,5 @@ int			initialise(t_data *data);
 //PHILOSOPHER
 int			death_checker(t_philosopher *philosopher, int end_of_experiment);
 void		live(t_philosopher *philosopher);
+void		terminate(t_data *data);
 #endif

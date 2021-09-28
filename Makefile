@@ -6,7 +6,7 @@
 #    By: jvanden- <jvanden-@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/25 11:52:43 by jvanden-          #+#    #+#              #
-#    Updated: 2021/09/27 13:21:17 by jvanden-         ###   ########.fr        #
+#    Updated: 2021/09/28 09:41:58 by jvanden-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ INCL		=	./includes/
 
 CFLAGS		=	-I $(INCL) $(FLAGS)
 
-NAME		=	philosophers
+NAME		=	philo
 
 ### PATH ###
 
@@ -26,7 +26,8 @@ SRCS_PHILOSOPHERS	=	philosophers.c \
 						parsing.c \
 						get_arguments.c \
 						initialisation.c \
-						activities.c
+						life.c \
+						terminate.c
 				
 SRCS_UTILS			=	ft_atoi.c \
 						exit.c \

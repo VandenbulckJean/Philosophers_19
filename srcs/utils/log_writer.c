@@ -6,7 +6,7 @@
 /*   By: jvanden- <jvanden-@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 13:15:42 by jvanden-          #+#    #+#             */
-/*   Updated: 2021/09/27 14:18:11 by jvanden-         ###   ########.fr       */
+/*   Updated: 2021/09/28 09:39:41 by jvanden-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ void	log_writer(t_philosopher *philosopher, char *str)
 	if (time >= 0 && !death_checker(philosopher, 0))
 	{
 		printf("%lld ", log_time);
-		printf("Philo %d %s", philosopher->_id, str);
+		printf("%d %s", philosopher->_id, str);
 	}
 }
