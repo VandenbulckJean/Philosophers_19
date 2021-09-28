@@ -6,7 +6,7 @@
 /*   By: jvanden- <jvanden-@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 16:17:24 by jvanden-          #+#    #+#             */
-/*   Updated: 2021/09/28 09:09:07 by jvanden-         ###   ########.fr       */
+/*   Updated: 2021/09/28 10:27:05 by jvanden-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		death_checker(t_philosopher *philosopher, int end_of_experiment)
 	return(0);
 }
 
-static void *death_angel(void *data)
+void *death_angel(void *data)
 {
 	t_philosopher	*philosopher;
 
@@ -49,7 +49,7 @@ static void *death_angel(void *data)
 	return (NULL);
 }
 
-static void	*philosopher(void *data)
+void	*philosopher(void *data)
 {
 	t_philosopher	*philosopher;
 
@@ -59,8 +59,8 @@ static void	*philosopher(void *data)
 	while(!death_checker(philosopher, 0))
 	{
 		pthread_create(&philosopher->death_angel_thread, NULL, death_angel, data);
-		live(philosopher);
 		pthread_detach(philosopher->death_angel_thread);
+		live(philosopher);
 		if (++philosopher->amount_meal_eaten == philosopher->data->number_of_times_each_philosopher_must_eat)
 		{
 			pthread_mutex_lock(&philosopher->data->assembly.end);

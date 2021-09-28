@@ -6,7 +6,7 @@
 /*   By: jvanden- <jvanden-@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 14:57:29 by jvanden-          #+#    #+#             */
-/*   Updated: 2021/09/28 08:33:14 by jvanden-         ###   ########.fr       */
+/*   Updated: 2021/09/28 10:01:47 by jvanden-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	free_n_exit(char error, t_data *data, char lvl)
 	else
 	{
 		free(data->assembly.philosophers);
-		printf("Exited without error\n");
 		return(1);
 	}
 }
